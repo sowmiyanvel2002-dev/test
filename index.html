@@ -25,7 +25,7 @@
     color: var(--cream);
     font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    line-height: 1.7;
+    line-height: 1.6;
     overflow-x: hidden;
   }
 
@@ -38,7 +38,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 5vw;
-    background: rgba(13,13,13,0.85);
+    background: rgba(13,13,13,0.9);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid var(--border);
   }
@@ -93,6 +93,7 @@
     align-items: center;
     max-width: 1200px;
     width: 100%;
+    margin: 0 auto;
   }
 
   .hero-eyebrow {
@@ -205,7 +206,7 @@
 
   /* SECTION COMMON */
   section {
-    padding: 7rem 5vw;
+    padding: 6rem 5vw;
   }
 
   .section-label {
@@ -225,6 +226,15 @@
 
   .section-title em { font-style: italic; color: var(--gold); }
 
+  .small-cinematic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin: 1.5rem 0 1rem 0;
+  }
+
   .divider {
     width: 48px;
     height: 1px;
@@ -232,19 +242,52 @@
     margin-bottom: 3rem;
   }
 
+  /* 2x2 CINEMATIC IMAGE MATRIX LAYOUT */
+  .matrix-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .matrix-item {
+    text-align: center;
+  }
+
+  .matrix-circle {
+    width: 100%;
+    max-width: 150px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 0.75rem auto;
+  }
+
+  .matrix-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
   /* ABOUT */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 5rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
     align-items: start;
-    max-width: 1100px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .about-body {
     font-size: 1rem;
     color: rgba(245,240,232,0.7);
-    line-height: 1.9;
+    line-height: 1.8;
   }
 
   .skill-tags {
@@ -268,7 +311,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 2.5rem;
   }
 
   .focus-item {
@@ -306,15 +349,15 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   .project-main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
     max-width: 1200px;
-    margin-bottom: 3rem;
+    margin: 0 auto;
   }
 
   .project-info {
@@ -334,14 +377,6 @@
     margin-bottom: 1.5rem;
   }
 
-  .project-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    font-style: italic;
-    line-height: 1.1;
-    margin-bottom: 1rem;
-  }
-
   .project-subtitle {
     font-size: 0.8rem;
     letter-spacing: 0.15em;
@@ -351,9 +386,9 @@
   }
 
   .project-body {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: rgba(245,240,232,0.65);
-    line-height: 1.85;
+    line-height: 1.8;
     margin-bottom: 2rem;
   }
 
@@ -361,6 +396,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
+    margin-top: 2rem;
   }
 
   .stat {
@@ -432,25 +468,26 @@
   .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    border: 0.5px solid var(--border);
-    max-width: 1100px;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .process-step {
-    padding: 2.5rem 1.75rem;
-    border-right: 0.5px solid var(--border);
-    position: relative;
+    padding: 2rem 1.5rem;
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
-
-  .process-step:last-child { border-right: none; }
 
   .step-num {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: 3rem;
     color: rgba(201,168,76,0.15);
     line-height: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .step-title {
@@ -464,7 +501,23 @@
   .step-body {
     font-size: 0.82rem;
     color: rgba(245,240,232,0.55);
-    line-height: 1.7;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  /* INLINE INTERNAL GRID LAYOUT IMAGE BOX SYSTEM */
+  .embedded-inline-img {
+    width: 100%;
+    border: 0.5px solid var(--border);
+    padding: 3px;
+    background: var(--dark);
+    margin-top: auto;
+  }
+
+  .embedded-inline-img img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* SKILLS SHOWCASE */
@@ -476,7 +529,8 @@
     gap: 1px;
     background: var(--border);
     border: 0.5px solid var(--border);
-    max-width: 1100px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .skill-item {
@@ -516,13 +570,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    max-width: 1100px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .reflection-card {
     background: var(--card-bg);
     border: 0.5px solid var(--border);
     padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .r-card-label {
@@ -536,13 +593,13 @@
   .r-card-body {
     font-size: 0.9rem;
     color: rgba(245,240,232,0.65);
-    line-height: 1.85;
+    line-height: 1.8;
   }
 
   .blockquote {
     border-left: 2px solid var(--gold);
     padding-left: 1.5rem;
-    margin: 2.5rem 0;
+    margin: 2rem 0 3rem 0;
     font-family: 'Playfair Display', serif;
     font-style: italic;
     font-size: 1.2rem;
@@ -576,40 +633,21 @@
 
   .contact-email:hover { color: var(--cream); }
 
-  /* FOOTER */
-  footer {
-    padding: 2rem 5vw;
-    border-top: 0.5px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow  { animation: fadeUp 0.6s ease both; }
-  .hero-title    { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-desc     { animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-cta      { animation: fadeUp 0.6s 0.3s ease both; }
-  .hero-visual   { animation: fadeUp 0.7s 0.35s ease both; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
+  /* RESPONSIVE STRUCTURE */
+  @media (max-width: 992px) {
     .hero-grid, .about-grid, .project-main, .reflection-grid {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3rem;
     }
     .hero-visual { display: none; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
+    .matrix-2x2 { padding-right: 0; margin-bottom: 2rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .skills-grid { grid-template-columns: 1fr; }
     nav .nav-links { display: none; }
-    .project-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 576px) {
+    .process-steps { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -664,11 +702,27 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
-    <div>
-      <p class="section-label">About Me</p>
-      <h2 class="section-title">Craft,<br><em>curiosity</em> &<br>collaboration</h2>
-      <div class="divider"></div>
+    
+    <!-- UPDATED 2x2 IMAGE MATRIX MATRIX WITH REQUESTED FILENAMES -->
+    <div class="matrix-2x2">
+      <div class="matrix-item">
+        <img class="matrix-circle" src="project validation.jpg" alt="Project Validation">
+        <div class="matrix-label">Project Validation</div>
+      </div>
+      <div class="matrix-item">
+        <img class="matrix-circle" src="behind the scenes.jpg" alt="Behind the Scenes">
+        <div class="matrix-label">Behind the Scenes</div>
+      </div>
+      <div class="matrix-item">
+        <img class="matrix-circle" src="outcome.jpg" alt="Outcome">
+        <div class="matrix-label">Outcome</div>
+      </div>
+      <div class="matrix-item">
+        <img class="matrix-circle" src="reflection.jpg" alt="Reflection">
+        <div class="matrix-label">Reflection</div>
+      </div>
     </div>
+
     <div>
       <p class="about-body">
         I am a BA Film Production student. I appreciate both the technical and artistic parts of filmmaking. I am totally interested in sound production and cinematography, and I enjoy examining how sound and pictures combine to convey emotion and meaning in movies.
@@ -686,7 +740,7 @@
         <span class="tag">Team Collaboration</span>
       </div>
 
-      <div class="focus-grid" style="margin-top: 2.5rem;">
+      <div class="focus-grid">
         <div class="focus-item">
           <div class="focus-num">01</div>
           <div class="focus-name">Sound Production</div>
@@ -724,33 +778,13 @@
   <div class="project-main">
     <div class="project-info">
       <span class="project-genre">Film Production · Short Deliverable Portfolio</span>
-      
-      <!-- IMAGE INSERTION: PROJECT OVERVIEW -->
-      <div style="margin-bottom: 1.5rem; border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-        <img src="project-overview.jpg" alt="Project Overview Graphic" style="width: 100%; height: auto; display: block;">
-        <p style="font-size: 0.7rem; color: var(--gold); margin-top: 5px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center;">Project Overview Visual</p>
-      </div>
-      
-      <!-- IMAGE INSERTION: PRE-PRODUCTION RESEARCH -->
-      <div style="margin-bottom: 1.5rem; border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-        <img src="pre-production.jpg" alt="Pre Production Research Layout" style="width: 100%; height: auto; display: block;">
-        <p style="font-size: 0.7rem; color: var(--gold); margin-top: 5px; letter-spacing: 0.1em; text-transform: uppercase; text-align: center;">Pre-Production Research</p>
-      </div>
 
-      <h3 class="project-title">Behind The Scenes</h3>
-      
-      <!-- IMAGE INSERTION: BEHIND THE SCENES & PROJECT VALIDATION -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0;">
-        <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-          <img src="behind-the-scenes.jpg" alt="Behind The Scenes Still" style="width: 100%; height: auto; display: block;">
-          <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin-top: 4px;">Behind The Scenes</p>
-        </div>
-        <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-          <img src="project-validation.jpg" alt="Project Validation Dashboard" style="width: 100%; height: auto; display: block;">
-          <p style="font-size: 0.65rem; color: var(--muted); text-align: center; margin-top: 4px;">Project Validation</p>
-        </div>
-      </div>
+      <h3 class="small-cinematic-title">Behind the Scenes</h3>
+      <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.5rem;">
+        Comprehensive visual tracking logs detailing equipment deployment, production workspace configuration, and technical monitoring layouts.
+      </p>
 
+      <h3 class="small-cinematic-title">Project Validation</h3>
       <p class="project-subtitle">Core Production Elements & Execution Pipeline</p>
       <p class="project-body">
         The project faced distinct operational requirements, specifically targeting how recorded reading dialogue accurately matched the atmospheric background environment and underlying emotion of each scene.
@@ -774,14 +808,9 @@
     </div>
 
     <div class="project-sidebar">
-      <!-- IMAGE INSERTION: RESEARCH & PREPARATION -->
-      <div style="margin-bottom: 1rem; border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-        <img src="research-prep.jpg" alt="Research and Preparation" style="width: 100%; height: auto; display: block;">
-      </div>
-      
-      <!-- IMAGE INSERTION: SUGGESTED VISUALS -->
-      <div style="margin-bottom: 1rem; border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
-        <img src="suggested-visuals.jpg" alt="Suggested Visuals Diagram" style="width: 100%; height: auto; display: block;">
+      <!-- IMAGE INSERTION: pre-production (width 100% block) -->
+      <div style="margin-bottom: 1.5rem; width: 100%; border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg);">
+        <img src="pre-production.jpg" alt="Pre-Production" style="width: 100%; height: auto; display: block;">
       </div>
 
       <div class="sidebar-block">
@@ -820,59 +849,56 @@
   <div class="divider"></div>
 
   <div class="process-steps">
+    
+    <!-- COLUMN 1: RESEARCH AND PREPARATION -->
     <div class="process-step">
       <div class="step-num">01</div>
       <div class="step-title">Research & Preparation</div>
       <div class="step-body">Conducting targeted pre-production research to evaluate structural constraints, map layout pathways, and compile script requirements.</div>
+      
+      <!-- IMAGE INSERTION: research and preparation -->
+      <div class="embedded-inline-img">
+        <img src="research-prep.jpg" alt="Research & Preparation Column Visual">
+      </div>
     </div>
+    
+    <!-- COLUMN 2: PRODUCTION PROCESS -->
     <div class="process-step">
       <div class="step-num">02</div>
       <div class="step-title">Production Process</div>
       <div class="step-body">Recording live ambient profiles and technical audio track configurations directly during the on-set filming phases.</div>
+      
+      <!-- IMAGE INSERTION: production process -->
+      <div class="embedded-inline-img">
+        <img src="production-process-bg.jpg" alt="Production Process Column Visual">
+      </div>
     </div>
+    
+    <!-- COLUMN 3: POST PRODUCTION -->
     <div class="process-step">
       <div class="step-num">03</div>
       <div class="step-title">Post-Production</div>
       <div class="step-body">Refining captured sound layers, optimizing volume balances, adjusting cuts, and ensuring high-fidelity audio consistency.</div>
+      
+      <!-- IMAGE INSERTION: post production -->
+      <div class="embedded-inline-img">
+        <img src="post-production-bg.jpg" alt="Post Production Column Visual">
+      </div>
     </div>
+    
+    <!-- COLUMN 4: VISUAL DOCUMENTATION -->
     <div class="process-step">
       <div class="step-num">04</div>
       <div class="step-title">Visual Documentation</div>
-      <div class="step-body">
-        Validating the project pipeline via rigorous checkpoints and checking the overarching pacing of the media output.
-        
-        <!-- IMAGE INSERTION: VISUAL DOCUMENTATION (4 GRID ITEMS) -->
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
-          <img src="visual-doc-1.jpg" alt="Visual Doc 1" style="width: 100%; height: auto; border: 0.5px solid var(--border);">
-          <img src="visual-doc-2.jpg" alt="Visual Doc 2" style="width: 100%; height: auto; border: 0.5px solid var(--border);">
-          <img src="visual-doc-3.jpg" alt="Visual Doc 3" style="width: 100%; height: auto; border: 0.5px solid var(--border);">
-          <img src="visual-doc-4.jpg" alt="Visual Doc 4" style="width: 100%; height: auto; border: 0.5px solid var(--border);">
-        </div>
+      <div class="step-body">Validating the project pipeline via rigorous checkpoints and checking the overarching pacing of the media output.</div>
+      
+      <!-- IMAGE INSERTION: visual-doc-1 & visual-doc-2 (side-by-side grid inside column) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; margin-top: auto; border: 0.5px solid var(--border); padding: 3px; background: var(--dark);">
+        <img src="visual-doc-1.jpg" alt="Visual Documentation 1" style="width: 100%; height: auto; border: 0.5px solid rgba(255,255,255,0.1);">
+        <img src="visual-doc-2.jpg" alt="Visual Documentation 2" style="width: 100%; height: auto; border: 0.5px solid rgba(255,255,255,0.1);">
       </div>
     </div>
-  </div>
-</section>
 
-<!-- IMAGE INSERTION: DESCRIPTIONS PANEL (4 GRID ITEMS) -->
-<section style="background: #0d0d0d; padding: 3rem 5vw 0 5vw;">
-  <p class="section-label">Production Descriptions</p>
-  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1100px; margin: 0 auto;">
-    <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg); text-align: center;">
-      <img src="description-1.jpg" alt="Description Unit 1" style="width: 100%; height: auto; display: block; margin-bottom: 4px;">
-      <span style="font-size: 0.65rem; color: var(--muted);">Description 01</span>
-    </div>
-    <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg); text-align: center;">
-      <img src="description-2.jpg" alt="Description Unit 2" style="width: 100%; height: auto; display: block; margin-bottom: 4px;">
-      <span style="font-size: 0.65rem; color: var(--muted);">Description 02</span>
-    </div>
-    <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg); text-align: center;">
-      <img src="description-3.jpg" alt="Description Unit 3" style="width: 100%; height: auto; display: block; margin-bottom: 4px;">
-      <span style="font-size: 0.65rem; color: var(--muted);">Description 03</span>
-    </div>
-    <div style="border: 0.5px solid var(--border); padding: 5px; background: var(--card-bg); text-align: center;">
-      <img src="description-4.jpg" alt="Description Unit 4" style="width: 100%; height: auto; display: block; margin-bottom: 4px;">
-      <span style="font-size: 0.65rem; color: var(--muted);">Description 04</span>
-    </div>
   </div>
 </section>
 
@@ -945,50 +971,73 @@
 <!-- REFLECTION -->
 <section class="reflection-section">
   <p class="section-label">Reflection</p>
-  <h2 class="section-title">Growth through<br>every <em>challenge</em></h2>
-  <div class="divider"></div>
+  
+  <h3 class="small-cinematic-title">Outcome Analysis</h3>
+  <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 2rem;">
+    Critical review metrics measuring post-production audio consistency, scene synchronization depth, and narrative output values.
+  </p>
 
   <blockquote class="blockquote">
     "The core of the project was utilizing the combination of sound and picture to ensure a professional and immersive cinematic storytelling artifact."
   </blockquote>
 
-  <!-- IMAGE INSERTION: OUTCOME & FINAL REFLECTION SIDE-BY-SIDE PANELS -->
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 0 auto 3rem auto;">
-    <div style="border: 0.5px solid var(--border); padding: 8px; background: var(--card-bg);">
-      <img src="production-outcome.jpg" alt="Production Outcome Display" style="width: 100%; height: auto; display: block;">
-      <p style="font-size: 0.7rem; color: var(--gold); margin-top: 8px; text-align: center; letter-spacing: 0.1em; text-transform: uppercase;">Outcome Visual</p>
-    </div>
-    <div style="border: 0.5px solid var(--border); padding: 8px; background: var(--card-bg);">
-      <img src="final-reflection.jpg" alt="Final Reflection Summary" style="width: 100%; height: auto; display: block;">
-      <p style="font-size: 0.7rem; color: var(--gold); margin-top: 8px; text-align: center; letter-spacing: 0.1em; text-transform: uppercase;">Final Reflection Visual</p>
-    </div>
-  </div>
-
   <div class="reflection-grid">
+    
+    <!-- CARD 1: CHALLENGE OVERCOME -->
     <div class="reflection-card">
       <div class="r-card-label">Challenge Overcome</div>
+      
+      <div style="margin-bottom: 1rem; width: 100%; border: 0.5px solid var(--border); padding: 3px; background: var(--dark);">
+        <img src="challenging.jpg" alt="Challenging Layout" style="width: 100%; height: auto; display: block;">
+      </div>
+
       <div class="r-card-body">
         Managing communication barriers with group members at the beginning was one of the central challenges faced during this production layout. Committing to a strong structure of clear visual documentation and regular, scheduled progress reviews allowed the team to align its technical objectives effectively.
       </div>
     </div>
+    
+    <!-- CARD 2: PRODUCTION OUTCOME COLUMN -->
     <div class="reflection-card">
       <div class="r-card-label">Production Outcome</div>
+      
+      <!-- IMAGE INSERTION: production outcome column -->
+      <div style="margin-bottom: 1rem; width: 100%; border: 0.5px solid var(--border); padding: 3px; background: var(--dark);">
+        <img src="production-outcome-2.jpg" alt="Production Outcome Display Element" style="width: 100%; height: auto; display: block;">
+      </div>
+
       <div class="r-card-body">
         The final sound track mix completely served to strengthen the emotional intensity of the visual composition. It elevated the project beyond a baseline level, successfully delivering an optimized narrative arc that met all academic criteria.
       </div>
     </div>
+    
+    <!-- CARD 3: FORWARD FOCUS COLUMN -->
     <div class="reflection-card">
       <div class="r-card-label">Forward Focus</div>
+      
+      <!-- IMAGE INSERTION: forward focus column -->
+      <div style="margin-bottom: 1rem; width: 100%; border: 0.5px solid var(--border); padding: 3px; background: var(--dark);">
+        <img src="forward-focus.jpg" alt="Forward Focus Display Element" style="width: 100%; height: auto; display: block;">
+      </div>
+
       <div class="r-card-body">
         Moving forward, my intent is focused on keeping both sound production and structural cinematography at the forefront of my creative work. I plan to refine my approach to pre-production planning to minimize post-production troubleshooting bottlenecks.
       </div>
     </div>
+    
+    <!-- CARD 4: REFLECTION BREAKDOWN COLUMN -->
     <div class="reflection-card">
-      <div class="r-card-label">Final Reflection</div>
+      <div class="r-card-label">Reflection Breakdown</div>
+      
+      <!-- IMAGE INSERTION: reflection breakdown column -->
+      <div style="margin-bottom: 1rem; width: 100%; border: 0.5px solid var(--border); padding: 3px; background: var(--dark);">
+        <img src="reflection-breakdown.jpg" alt="Reflection Breakdown Element" style="width: 100%; height: auto; display: block;">
+      </div>
+
       <div class="r-card-body">
         This project provided deep practical insights into combining distinct production disciplines. Balancing the technical demands of sound recording with artistic cinematic framing has fundamentally reshaped my long-term creative execution strategy.
       </div>
     </div>
+
   </div>
 </section>
 
