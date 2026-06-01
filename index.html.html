@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alwin Josh — Film Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f5f0e8;
+    --dark: #0d0d0d;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --muted: #6b6560;
+    --card-bg: #161616;
+    --border: rgba(201,168,76,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 5vw;
+    background: rgba(13,13,13,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 5vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.65);
+    max-width: 440px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .hero-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 1rem;
+  }
+
+  .hero-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-card:first-child {
+    grid-row: span 2;
+    background: linear-gradient(180deg, #1a1510 0%, #0d0d0d 100%);
+  }
+
+  .hero-card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.4;
+  }
+
+  .hero-card-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+  }
+
+  .film-strip {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    background: #111;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .strip-hole {
+    width: 14px;
+    height: 22px;
+    border: 1px solid #333;
+    flex-shrink: 0;
+  }
+
+  /* SECTION COMMON */
+  section {
+    padding: 7rem 5vw;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  .about-body {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.9;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    padding: 0.4rem 0.9rem;
+    border: 0.5px solid var(--border);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.06);
+  }
+
+  .focus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .focus-item {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .focus-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .focus-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .focus-desc {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.6;
+  }
+
+  /* PROJECT */
+  .project-section { background: #0a0a0a; }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .project-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin-bottom: 3rem;
+  }
+
+  .project-info {
+    border-top: 1px solid var(--gold);
+    padding-top: 2rem;
+  }
+
+  .project-genre {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    background: rgba(201,168,76,0.12);
+    border: 0.5px solid var(--gold);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-style: italic;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .project-subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .project-body {
+    font-size: 0.92rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+  }
+
+  .project-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .stat {
+    border-top: 0.5px solid var(--border);
+    padding-top: 0.75rem;
+  }
+
+  .stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.2rem;
+  }
+
+  .project-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sidebar-block {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .sidebar-block h4 {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .sidebar-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .sidebar-list li {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.65);
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .sidebar-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  /* PROCESS */
+  .process-section { background: var(--dark); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border);
+    max-width: 1100px;
+  }
+
+  .process-step {
+    padding: 2.5rem 1.75rem;
+    border-right: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .step-body {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.7;
+  }
+
+  /* SKILLS SHOWCASE */
+  .skills-section { background: #0a0a0a; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+    max-width: 1100px;
+  }
+
+  .skill-item {
+    background: #0a0a0a;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .skill-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--border);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .skill-content h4 {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-content p {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.5);
+    line-height: 1.6;
+  }
+
+  /* REFLECTION */
+  .reflection-section { background: var(--dark); }
+
+  .reflection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+  }
+
+  .reflection-card {
+    background: var(--card-bg);
+    border: 0.5px solid var(--border);
+    padding: 2.5rem;
+  }
+
+  .r-card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+  }
+
+  .r-card-body {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.85;
+  }
+
+  .blockquote {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin: 2.5rem 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.6;
+    max-width: 680px;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: #050505;
+    text-align: center;
+  }
+
+  .contact-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-email {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin: 2rem auto 3rem;
+    transition: color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 5vw;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow  { animation: fadeUp 0.6s ease both; }
+  .hero-title    { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc     { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-cta      { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-visual   { animation: fadeUp 0.7s 0.35s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-grid, .about-grid, .project-main, .reflection-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .hero-visual { display: none; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .project-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Alwin Josh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="hero-eyebrow">BA Film Production · Sound & Cinematography</p>
+      <h1 class="hero-title">Shaping<br>Stories Through<br><em>Sound</em></h1>
+      <p class="hero-desc">I'm a film production student passionate about the intersection of audio and image — crafting immersive experiences that resonate emotionally and technically.</p>
+      <a href="#project" class="hero-cta">View my work →</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="film-strip">
+          <div class="strip-hole"></div><div class="strip-hole"></div><div class="strip-hole"></div>
+          <div class="strip-hole"></div><div class="strip-hole"></div><div class="strip-hole"></div>
+          <div class="strip-hole"></div><div class="strip-hole"></div>
+        </div>
+        <div class="hero-card-icon">🎬</div>
+        <div class="hero-card-label">Featured Film</div>
+        <div class="hero-card-title">Under The Table</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🎙</div>
+        <div class="hero-card-label">Specialty</div>
+        <div class="hero-card-title">Sound Design</div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🎞</div>
+        <div class="hero-card-label">Focus</div>
+        <div class="hero-card-title">Post-Production</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">About Me</p>
+      <h2 class="section-title">Craft,<br><em>curiosity</em> &<br>collaboration</h2>
+      <div class="divider"></div>
+    </div>
+    <div>
+      <p class="about-body">
+        As a BA Film Production student, I'm drawn to both the technical and artistic dimensions of filmmaking. My particular passion lies in sound production and cinematography — exploring how audio and visuals combine to convey emotion and meaning.
+        <br><br>
+        Through my studies I've been honing practical skills in editing and sound design, working in collaborative team environments that mirror real industry workflows. I believe every scene's atmosphere lives as much in its sound as in its images.
+      </p>
+      <div class="skill-tags">
+        <span class="tag">Adobe Audition</span>
+        <span class="tag">Adobe Premiere Pro</span>
+        <span class="tag">Audacity</span>
+        <span class="tag">Boom Mic</span>
+        <span class="tag">Audio Syncing</span>
+        <span class="tag">Noise Reduction</span>
+        <span class="tag">Sound Design</span>
+        <span class="tag">Cinematography</span>
+      </div>
+
+      <div class="focus-grid" style="margin-top: 2.5rem;">
+        <div class="focus-item">
+          <div class="focus-num">01</div>
+          <div class="focus-name">Sound Production</div>
+          <div class="focus-desc">Dialogue recording, ambient capture, and audio monitoring on set.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">02</div>
+          <div class="focus-name">Post-Production</div>
+          <div class="focus-desc">Noise reduction, syncing, balancing and sound design in editing.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">03</div>
+          <div class="focus-name">Cinematography</div>
+          <div class="focus-desc">Framing, lighting, and visual storytelling through the lens.</div>
+        </div>
+        <div class="focus-item">
+          <div class="focus-num">04</div>
+          <div class="focus-name">Collaboration</div>
+          <div class="focus-desc">Teamwork, communication, and creative problem-solving in production.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECT -->
+<section id="project" class="project-section">
+  <div class="project-header">
+    <div>
+      <p class="section-label">Featured Project</p>
+      <h2 class="section-title"><em>Under The Table</em></h2>
+    </div>
+  </div>
+
+  <div class="project-main">
+    <div class="project-info">
+      <span class="project-genre">Crime Thriller · Short Film · 1930s London</span>
+      <h3 class="project-title">Under The Table</h3>
+      <p class="project-subtitle">Collaborative Group Production · Sound Lead</p>
+      <p class="project-body">
+        A crime-thriller short film set in 1930s London, designed to build suspense through cinematic storytelling, immersive visuals, and detailed sound design. Inspired by productions like <em>Peaky Blinders</em> and <em>No Country for Old Men</em>, the film centres on a high-stakes gangster poker game.
+        <br><br>
+        My primary role focused on sound production and audio editing — supporting dialogue recording, monitoring on-set audio quality, capturing ambient sounds, and leading post-production sound editing.
+      </p>
+      <div class="project-stats">
+        <div class="stat">
+          <div class="stat-val">1930s</div>
+          <div class="stat-label">Setting Era</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">Sound</div>
+          <div class="stat-label">Primary Role</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">3 Tools</div>
+          <div class="stat-label">Software Used</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-sidebar">
+      <div class="sidebar-block">
+        <h4>Equipment Used</h4>
+        <ul class="sidebar-list">
+          <li>Boom Microphone</li>
+          <li>Headphones (monitoring)</li>
+          <li>Laptop</li>
+          <li>Camera Audio Setup</li>
+          <li>External Storage Devices</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Sound Design Elements</h4>
+        <ul class="sidebar-list">
+          <li>Poker chip foley</li>
+          <li>Footstep ambience</li>
+          <li>Breathing & tension cues</li>
+          <li>Glasses clinking effects</li>
+          <li>Background pub ambience</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <h4>Cinematic Inspirations</h4>
+        <ul class="sidebar-list">
+          <li>Peaky Blinders</li>
+          <li>No Country for Old Men</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-section">
+  <p class="section-label">Production Workflow</p>
+  <h2 class="section-title">How the film<br>came <em>to life</em></h2>
+  <div class="divider"></div>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Pre-Production Research</div>
+      <div class="step-body">Studied sound recording techniques, microphone positioning, audio setup workflows, and watched editing tutorials to understand how sound elevates storytelling.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">On-Set Recording</div>
+      <div class="step-body">Recorded dialogue and live sound during filming while actively monitoring audio quality. Maintained communication with the team throughout the shoot.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Post-Production</div>
+      <div class="step-body">Removed background noise, synced audio with video, adjusted sound levels, added atmospheric effects and exported the final polished audio mix.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Review & Refine</div>
+      <div class="step-body">Conducted editing reviews, integrated team feedback, and revised audio to ensure the sound supported the mood and visual rhythm of every scene.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <p class="section-label">Skills Demonstrated</p>
+  <h2 class="section-title">What I bring<br>to every <em>production</em></h2>
+  <div class="divider"></div>
+
+  <div class="skills-grid">
+    <div class="skill-item">
+      <div class="skill-num">01</div>
+      <div class="skill-content">
+        <h4>Sound Production & Audio Editing</h4>
+        <p>End-to-end audio workflow from on-set recording through to finalised post-production mix.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">02</div>
+      <div class="skill-content">
+        <h4>Dialogue Recording & Monitoring</h4>
+        <p>Boom operation, real-time monitoring, and quality control during live shoots.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">03</div>
+      <div class="skill-content">
+        <h4>Audio Synchronisation</h4>
+        <p>Precise syncing of recorded audio with video footage across multiple scenes and takes.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">04</div>
+      <div class="skill-content">
+        <h4>Atmosphere & Tension Building</h4>
+        <p>Crafting soundscapes that heighten emotional impact and genre-specific atmosphere.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">05</div>
+      <div class="skill-content">
+        <h4>Team Collaboration</h4>
+        <p>Coordinating with directors, cinematographers, and editors in a professional group workflow.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">06</div>
+      <div class="skill-content">
+        <h4>Creative Problem Solving</h4>
+        <p>Navigating time constraints, technical challenges, and communication barriers to deliver results.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">07</div>
+      <div class="skill-content">
+        <h4>Film Production Workflow</h4>
+        <p>Understanding of the full pre-production, production and post-production pipeline.</p>
+      </div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-num">08</div>
+      <div class="skill-content">
+        <h4>Attention to Detail</h4>
+        <p>Careful consistency across scenes — level matching, noise profiling, and sound balancing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section class="reflection-section">
+  <p class="section-label">Reflection</p>
+  <h2 class="section-title">Growth through<br>every <em>challenge</em></h2>
+  <div class="divider"></div>
+
+  <blockquote class="blockquote">
+    "Working on Under The Table deepened my understanding of how sound supports storytelling, atmosphere, pacing, and emotional tension within film production."
+  </blockquote>
+
+  <div class="reflection-grid">
+    <div class="reflection-card">
+      <div class="r-card-label">Challenge Overcome</div>
+      <div class="r-card-body">
+        Effective group communication was initially difficult — coordinating tasks and discussing ideas proved challenging early on. By committing to more open, proactive participation and adapting to the group's working style, team dynamics improved significantly, allowing us to finish the project efficiently and collaboratively.
+      </div>
+    </div>
+    <div class="reflection-card">
+      <div class="r-card-label">What I'd Do Differently</div>
+      <div class="r-card-body">
+        I would invest more time in planning and sound quality before filming begins. Better pre-production preparation — particularly in audio setup and location scouting — would reduce editing challenges downstream and lead to a more polished final product.
+      </div>
+    </div>
+    <div class="reflection-card">
+      <div class="r-card-label">Forward Focus</div>
+      <div class="r-card-body">
+        I'm continuing to develop my sound production and cinematography skills, exploring how music and image can create greater combined impact. I'm also building technical confidence with industry-standard tools through ongoing practice and new projects.
+      </div>
+    </div>
+    <div class="reflection-card">
+      <div class="r-card-label">Overall Outcome</div>
+      <div class="r-card-body">
+        <em>Under The Table</em> successfully combined cinematic storytelling, immersive sound design, and collaborative production to create an engaging crime-thriller short film. The project strengthened both my technical abilities and my creative understanding of what film can achieve.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's make<br>something <em>together</em></h2>
+    <div class="divider" style="margin: 1.5rem auto 0;"></div>
+    <p style="color: rgba(245,240,232,0.55); margin: 1.5rem 0 0; font-size: 0.9rem;">
+      Open to collaborations, placements, and film production opportunities.
+    </p>
+    <a class="contact-email" href="mailto:alwinjosh@email.com">alwinjosh@email.com</a>
+    <p style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);">
+      BA Film Production Student
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Alwin Josh</span>
+  <span>BA Film Production · Sound & Cinematography</span>
+</footer>
+
+</body>
+</html>
